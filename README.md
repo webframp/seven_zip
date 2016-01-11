@@ -28,6 +28,27 @@ Usage
 ### default
 Downloads and installs 7-zip to the location specified by `node['seven_zip']['home']`.  Also ensures `node['seven_zip']['home']` is in the system path.
 
+Resource/Provider
+-----------------
+### seven_zip_archive
+#### Actions
+- `:extract` - Extract a 7-zip supported archive
+
+#### Attribute Parameters
+- `path` - name attribute. The destination path to extract the archive to
+- `source` - archive to extract, local file or remote url
+- `overwrite` - overwrite destination path if it exists
+- `checksum` - sha256 checksum of the archive
+
+#### Examples
+Extract a Github release zip to a temporary location
+
+```ruby
+seven_zip_archive "C:\\temp\\chefdk_bootstrap" do
+  source 'https://github.com/Nordstrom/chefdk_bootstrap/archive/v1.4.1.zip'
+  action :extract
+end
+```
 
 License & Authors
 -----------------
